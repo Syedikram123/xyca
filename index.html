@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <script>
+    // 🎨 Add all your deployed painting URLs here
+    const allLinks = [
+  "https://dancing-eclair-46d997.netlify.app",
+  "https://resonant-twilight-93739f.netlify.app",
+  "https://playful-figolla-561e49.netlify.app",
+  "https://taupe-sunshine-227b32.netlify.app",
+  "https://sparkling-torte-950c72.netlify.app",
+  "https://enchanting-chimera-845aab.netlify.app",
+  "https://cosmic-nasturtium-ef6226.netlify.app",
+  "https://genuine-trifle-c1c1d0.netlify.app",
+  "https://jazzy-heliotrope-283377.netlify.app",
+  "https://jade-meerkat-305f40.netlify.app"
+];
+
+    // Load viewed links from localStorage
+    let viewedLinks = JSON.parse(localStorage.getItem("viewedLinks")) || [];
+
+    // Find unviewed links
+    const unviewed = allLinks.filter(link => !viewedLinks.includes(link));
+
+    let chosenLink;
+
+    if (unviewed.length > 0) {
+      // Pick a random unviewed link
+      chosenLink = unviewed[Math.floor(Math.random() * unviewed.length)];
+      viewedLinks.push(chosenLink);
+      localStorage.setItem("viewedLinks", JSON.stringify(viewedLinks));
+    } else {
+      // All viewed, reset and start again
+      localStorage.removeItem("viewedLinks");
+      chosenLink = allLinks[Math.floor(Math.random() * allLinks.length)];
+    }
+
+    // Redirect instantly
+    window.location.replace(chosenLink);
+  </script>
+</head>
+<body>
+</body>
+</html>
